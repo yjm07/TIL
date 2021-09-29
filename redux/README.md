@@ -2,17 +2,17 @@
 
 ## MVC 아키텍처의 한계
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d3097f61-d51c-4e87-ad77-811eb533ff20/Untitled.png)
+![Untitled](https://media.vlpt.us/images/alskt0419/post/ee1b0474-26a8-448e-bc2f-cda1724038fa/image.png)
 
 Controller가 Model의 데이터를 조회, 업데이트 하고 Model은 이 데이터를 View를 통해 반영한다. View는 사용자로부터 데이터를 입력받기도 해서 반대로 Model에 영향을 주기도 한다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/bd5e2fce-6840-457d-8588-2226aefa0674/Untitled.png)
+![Untitled](https://media.vlpt.us/images/alskt0419/post/35a7a12e-4f0d-416c-889c-92bdeca47dbb/image%20(1).png)
 
 이러한 Model ↔  View의 양방향 구조 때문에 어플리케이션이 거대해지면 복잡해지게 된다. 이렇게 복잡한 구조를 갖게 되면, 의존성의 이유로 View의 변경에 따라 여러 Model을 업데이트 해줘야 하는 경우가 생긴다.
 
 ## 해결책으로 나온 Flux 아키텍처
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b1a8afb4-3f53-4f7c-b1c3-0da7816f641d/Untitled.png)
+![Untitled](https://haruair.github.io/flux/img/flux-simple-f8-diagram-with-client-action-1300w.png)
 
 Flux 아키텍처는 단방향 데이터 흐름을 가진다. Dispatcher → Store → View의 흐름이고, View에서 데이터의 입력이 생기면 Action을 통해 Dispatcher에 반영한다. 따라서 데이터가 입력되면 처음부터 다시 시작되는 방식이다.
 
@@ -42,7 +42,7 @@ Redux는 위에서 설명한 Flux 아키텍처의 구현체 중 하나인데, �
 
 **Without Redux**
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b7f77fb0-b73c-4ef9-a5ba-261e1420c5c9/Untitled.png)
+![Untitled](https://i.imgur.com/RFjWPuh.png)
 
 Root 컴포넌트에는 something 이라는 상태 값이 있고, onDoSomething 이라는 함수가 something 값에 변화를 준다. onDoSomething 은 Root -> B -> H 로 전달되고, H 에서 이벤트가 발생하여 이 함수가 호출되면 something 이 Root -> A -> E -> F 로 전달된다.
 
@@ -50,7 +50,7 @@ props 가 필요한 곳으로 제대로 전달되게 하기 위하여, 실제로
 
 **With Redux**
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5f42154c-0000-490e-949e-16f4e39599ce/Untitled.png)
+![Untitled](https://i.imgur.com/U3S2iJ8.png)
 
 앱이 지니고 있는 상태와, 상태 변화 로직이 들어있는 스토어를 통해 원하는 컴포넌트에 원하는 상태값과 함수를 직접 주입해줄 수 있게 된다.
 
